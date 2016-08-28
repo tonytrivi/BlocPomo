@@ -3,28 +3,46 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>TonyPom</title>
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body ng-controller="LandingCtrl as landing">
+    <header>
+        <p class="lead">We're in the header.</p>
+    </header>
+    <nav>
+        <p clas="lead">We're in the nav.</p>
+    </nav>
+    <main class="container">
+        <p class="lead">This is the main.</p>
+        
+        <h3 class="text-success">23:45</h3>
+        
+        <input type="text" ng-model="data.text"/>
+        <!-- all changes from our Firebase database magically appear here! -->
+        <!-- <h1>You said: {{ data.text }}</h1> -->
+        <ul>
+            <li ng-repeat="thing in landing.object">{{thing}}</li>
+        </ul>
+        <h5>{{landing.heroTitle}}</h5>
+        <h6>{{landing.object | json}}</h6>
+
+
+
+        <ui-view></ui-view>   
+
+
+        <h2 id="bigTime"></h2>
+    </main>
+    <footer>
+        <p class="lead">We're in the footer.</p>
+    </footer>
     
     
-    <input type="text" ng-model="data.text"/>
-    <!-- all changes from our Firebase database magically appear here! -->
-    <!-- <h1>You said: {{ data.text }}</h1> -->
-    <ul>
-        <li ng-repeat="thing in landing.object">{{thing}}</li>
-    </ul>
-    <h2>{{landing.heroTitle}}</h2>
-    <h2>{{landing.object | json}}</h2>
     
-   
-    
-    <ui-view></ui-view>   
-   
-    
-    <h2 id="bigTime"></h2>
     
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.1.10/buzz.min.js"></script>
