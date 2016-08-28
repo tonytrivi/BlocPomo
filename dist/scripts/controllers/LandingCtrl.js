@@ -1,9 +1,9 @@
 (function() {
-     function LandingCtrl($firebaseObject) {
-         this.heroTitle = "you are the bomb!";
+     function LandingCtrl($firebaseObject,TimerManager) {
+         this.timerManager = TimerManager;
+    
          
          
-
          var dbRef = firebase.database().ref().child('tony');
          this.object = $firebaseObject(dbRef);
          //this.sayHello = () => { return `${this.object.name}`; }
@@ -12,13 +12,17 @@
          //var myObj = {name: 'grace'};
          //dbRef.push().set(myObj);
          
+         this.startTimer = function(){
+             TimerManager.start();
+         }
+         
 
          
      }
  
      angular
          .module('pomodoro')
-         .controller('LandingCtrl', ['$firebaseObject', LandingCtrl]);
+         .controller('LandingCtrl', ['$firebaseObject','TimerManager', LandingCtrl]);
  })();
 
 

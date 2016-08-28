@@ -8,34 +8,47 @@
 </head>
 <body ng-controller="LandingCtrl as landing">
     <header>
-        <p class="lead">We're in the header.</p>
+        <p class="lead">header</p>
     </header>
     <nav>
-        <p clas="lead">We're in the nav.</p>
+        <p class="lead">nav</p>
     </nav>
-    <main class="container">
-        <p class="lead">This is the main.</p>
+    <main>
+        <div class="container">
+                <div class="row text-center">
+                    <h1 class="text-success">23:44</h1>
+                    <p>{{landing.timerManager.running}} status</p>
+                </div>
+                <div class="row text-center">
+                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.timerManager.start()">Start Session</button>
+                </div>
+                <div class="row text-center">
+                    <button type="button" class="fade-in btn btn-primary btn-lg">Start Break</button>
+                </div>
+                
+           
+        </div>
         
-        <h3 class="text-success">23:45</h3>
         
-        <input type="text" ng-model="data.text"/>
-        <!-- all changes from our Firebase database magically appear here! -->
-        <!-- <h1>You said: {{ data.text }}</h1> -->
-        <ul>
+     
+        
+        
+        
+        
+        
+   <!--     <ul>
             <li ng-repeat="thing in landing.object">{{thing}}</li>
         </ul>
-        <h5>{{landing.heroTitle}}</h5>
-        <h6>{{landing.object | json}}</h6>
+         <h6>{{landing.object | json}}</h6> 
 
 
 
-        <ui-view></ui-view>   
+        <ui-view></ui-view>   -->
 
 
-        <h2 id="bigTime"></h2>
     </main>
     <footer>
-        <p class="lead">We're in the footer.</p>
+        <p class="lead">footer</p>
     </footer>
     
     
@@ -61,6 +74,7 @@
 
     </script>
     <script src="/scripts/app.js"></script>
+    <script src="/scripts/services/TimerManager.js"></script>
     <script src="/scripts/controllers/LandingCtrl.js"></script>
 </body>
 </html>

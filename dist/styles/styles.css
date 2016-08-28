@@ -1,0 +1,36 @@
+
+header {
+    background-color: lightgoldenrodyellow;
+}
+
+nav {
+    background-color: lightpink;
+}
+
+footer {
+    background-color: lightsalmon;
+}
+
+
+main {
+    background-color: aliceblue;
+}
+
+.fade-in {
+    opacity: 0.8;
+    -webkit-transition: opacity .3s ease-in;
+}
+
+.fade-in:hover {
+      opacity: .9;
+}
+
+
+
+
+
+
+
+
+
+   
