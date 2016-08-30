@@ -12,9 +12,7 @@
          //var myObj = {name: 'grace'};
          //dbRef.push().set(myObj);
          
-         this.startTimer = function(){
-             TimerManager.start();
-         }
+ 
          
 
          

@@ -16,11 +16,12 @@
     <main>
         <div class="container">
                 <div class="row text-center">
-                    <h1 class="text-success">23:44</h1>
-                    <p>{{landing.timerManager.running}} status</p>
+                    <h1 class="text-success" ng-show="!landing.timerManager.running">25:00</h1>
+                    <h1 class="text-success" ng-show="landing.timerManager.running">{{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}</h1>
+                   <!-- <p>Running status: {{landing.timerManager.running}}</p> -->
                 </div>
                 <div class="row text-center">
-                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.timerManager.start()">Start Session</button>
+                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.timerManager.startSession()">Start Session</button>
                 </div>
                 <div class="row text-center">
                     <button type="button" class="fade-in btn btn-primary btn-lg">Start Break</button>
@@ -76,6 +77,7 @@
     <script src="/scripts/app.js"></script>
     <script src="/scripts/services/TimerManager.js"></script>
     <script src="/scripts/controllers/LandingCtrl.js"></script>
+    <script src="/scripts/filters/TimeConverter.js"></script>
 </body>
 </html>
 

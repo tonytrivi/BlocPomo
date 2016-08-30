@@ -1,12 +1,29 @@
 (function() {
-     function TimerManager() {
+     function TimerManager($interval) {
      var TimerManager = {};
 
 /**
 * @desc Session length.
 * @type {Number}
 */
-TimerManager.sessionLength = 25000;  //25 minutes
+var SESSION_LENGTH = 1500;  //seconds - 25 minutes
+         
+/**
+* @desc 
+* @type {void}
+*/
+var count = function () {
+    TimerManager.running = true;
+    $interval(function(){
+        if (TimerManager.currentTime > 0) {
+            TimerManager.currentTime--;
+        }
+        else {
+            TimerManager.running = false;
+        }
+        
+    }, 1000);
+};
 
 /**
 * @desc Timer time remaining.
@@ -25,12 +42,14 @@ TimerManager.running = null;
 * @scope public
 * @desc Starts or resets the timer.
 */
-TimerManager.start = function() {
+TimerManager.startSession = function() {
     if (TimerManager.running) {
         TimerManager.running = false;
     }
     else {
-        TimerManager.running = true;
+        TimerManager.currentTime = SESSION_LENGTH;
+        //begin countdown
+        count();
     }
             
 };
@@ -40,5 +59,5 @@ TimerManager.start = function() {
  
      angular
          .module('pomodoro')
-         .factory('TimerManager', [TimerManager]);
+         .factory('TimerManager', ['$interval', TimerManager]);
 })();
