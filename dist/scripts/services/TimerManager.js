@@ -7,21 +7,39 @@
 * @type {Number}
 */
 var SESSION_LENGTH = 1500;  //seconds - 25 minutes
+
+/**
+* @desc promise for the $interval function.
+* @type {Object}
+*/
+var intervalPromise = null;
          
 /**
-* @desc 
+* @desc stops countdown and resets state.
+* @type {Object}
+*/
+var stopCountdown = function () {
+    if (intervalPromise) {
+        $interval.cancel(intervalPromise);
+        TimerManager.running = false;
+        //reset the timer
+        TimerManager.currentTime = SESSION_LENGTH;
+    }
+};
+         
+/**
+* @desc Stops or starts the countdown
 * @type {void}
 */
 var count = function () {
     TimerManager.running = true;
-    $interval(function(){
+    intervalPromise = $interval(function(){
         if (TimerManager.currentTime > 0) {
             TimerManager.currentTime--;
         }
         else {
             TimerManager.running = false;
-        }
-        
+        }   
     }, 1000);
 };
 
@@ -35,7 +53,7 @@ TimerManager.currentTime = null;
 * @desc Let's you know if the timer is counting down.
 * @type {Boolean}
 */
-TimerManager.running = null;
+TimerManager.running = false;
 
 /**
 * @function TimerManager.start
@@ -44,7 +62,8 @@ TimerManager.running = null;
 */
 TimerManager.startSession = function() {
     if (TimerManager.running) {
-        TimerManager.running = false;
+        //stop the countdown and reset state
+        stopCountdown();
     }
     else {
         TimerManager.currentTime = SESSION_LENGTH;

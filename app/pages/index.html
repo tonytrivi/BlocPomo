@@ -21,7 +21,7 @@
                    <!-- <p>Running status: {{landing.timerManager.running}}</p> -->
                 </div>
                 <div class="row text-center">
-                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.timerManager.startSession()">Start Session</button>
+                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.timerManager.startSession()">{{ landing.timerManager.running ? 'Reset' : 'Start Session' }}</button>
                 </div>
                 <div class="row text-center">
                     <button type="button" class="fade-in btn btn-primary btn-lg">Start Break</button>
