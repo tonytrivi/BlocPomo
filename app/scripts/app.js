@@ -12,12 +12,7 @@
                 controller: 'LandingCtrl as landing',
                 templateUrl: '/templates/landing.html'
             })
-            .state('session', {
-                url: '/session',
-                controller: 'SessionCtrl as session',
-                templateUrl: '/templates/session.html'
-            })
-             .state('collection', {
+            .state('collection', {
                 url: '/collection',
                 controller: 'CollectionCtrl as collection',
                 templateUrl: '/templates/collection.html'

@@ -28,7 +28,7 @@ var stopCountdown = function () {
 };
          
 /**
-* @desc Stops or starts the countdown
+* @desc Starts the countdown for a session
 * @type {void}
 */
 var count = function () {
@@ -38,7 +38,8 @@ var count = function () {
             TimerManager.currentTime--;
         }
         else {
-            TimerManager.running = false;
+            //count is over
+            stopCountdown();
         }   
     }, 1000);
 };
@@ -56,13 +57,12 @@ TimerManager.currentTime = null;
 TimerManager.running = false;
 
 /**
-* @function TimerManager.start
+* @function TimerManager.startSession
 * @scope public
 * @desc Starts or resets the timer.
 */
 TimerManager.startSession = function() {
     if (TimerManager.running) {
-        //stop the countdown and reset state
         stopCountdown();
     }
     else {

@@ -3,6 +3,7 @@
          this.timerManager = TimerManager;
          this.RESET = "Reset";
          this.START_SESSION = "Start Session";
+         
          this.sessionDisplay = this.START_SESSION;
          
          this.startSession = function () {
@@ -20,9 +21,6 @@
          };
          
 
-         
-         
-    
          
          
          //firebase experimenting
