@@ -17,14 +17,18 @@
         <div class="container">
                 <div class="row text-center">
                     <h1 class="text-success" ng-show="!landing.timerManager.running">25:00</h1>
-                    <h1 class="text-success" ng-show="landing.timerManager.running">{{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}</h1>
+                    <h1 class="text-success" ng-show="landing.timerManager.running">
+                        {{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}
+                    </h1>
                    <!-- <p>Running status: {{landing.timerManager.running}}</p> -->
                 </div>
                 <div class="row text-center">
-                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.timerManager.startSession()">{{ landing.timerManager.running ? 'Reset' : 'Start Session' }}</button>
+                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.startSession()">
+                        {{ landing.sessionDisplay }}
+                    </button>
                 </div>
                 <div class="row text-center">
-                    <button type="button" class="fade-in btn btn-primary btn-lg">Start Break</button>
+                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="false">Start Break</button>
                 </div>
                 
            
