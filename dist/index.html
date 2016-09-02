@@ -15,20 +15,25 @@
     </nav>
     <main>
         <div class="container">
-                <div class="row text-center">
+                <div class="row text-center" ng-hide="landing.timerManager.sessionCompleted">
                     <h1 class="text-success" ng-show="!landing.timerManager.running">25:00</h1>
                     <h1 class="text-success" ng-show="landing.timerManager.running">
                         {{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}
                     </h1>
-                </div>
-                <div class="row text-center">
                     <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.startSession()">
                         {{ landing.sessionDisplay }}
                     </button>
                 </div>
-                <div class="row text-center">
-                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="false">Start Break</button>
+                <div class="row text-center" ng-hide="!landing.timerManager.sessionCompleted">
+                    <h1 class="text-success" ng-show="!landing.timerManager.running">5:00</h1>
+                    <h1 class="text-success" ng-show="landing.timerManager.running">
+                        {{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}
+                    </h1>
+                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-click="landing.startBreak()">
+                        {{ landing.breakDisplay }}
+                    </button>
                 </div>
+                
                 
         </div>
         

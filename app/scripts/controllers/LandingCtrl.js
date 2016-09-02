@@ -3,8 +3,10 @@
          this.timerManager = TimerManager;
          this.RESET = "Reset";
          this.START_SESSION = "Start Session";
+         this.START_BREAK = "Start Break";
          
          this.sessionDisplay = this.START_SESSION;
+         this.breakDisplay = this.START_BREAK;
          
          this.startSession = function () {
              if (!TimerManager.running) {
@@ -14,6 +16,21 @@
              else {
                 this.sessionDisplay = this.START_SESSION;
                 this.timerManager.startSession();
+                 
+             }
+             
+         
+         };
+         
+         
+         this.startBreak = function () {
+             if (!TimerManager.running) {
+                this.breakDisplay = this.RESET;
+                this.timerManager.startBreak();
+             }
+             else {
+                this.breakDisplay = this.START_BREAK;
+                this.timerManager.startBreak();
                  
              }
              
