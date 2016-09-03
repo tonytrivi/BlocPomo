@@ -11,14 +11,13 @@ footer {
     background-color: lightsalmon;
 }
 
-
 main {
     background-color: aliceblue;
 }
 
 .fade-in {
     opacity: 0.8;
-    -webkit-transition: opacity .3s ease-in;
+    -webkit-transition: opacity .4s ease-in;
 }
 
 .fade-in:hover {

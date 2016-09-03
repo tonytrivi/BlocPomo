@@ -33,6 +33,12 @@ TimerManager.sessionCompleted = false;
 TimerManager.onBreak = false;  //session or break
          
 /**
+* @desc Indicates sessions completed
+* @type {Number}
+*/
+var completedSessions = 0;
+         
+/**
 * @desc stops countdown and resets state.
 * @type {Object}
 */
@@ -46,8 +52,16 @@ var stopCountdown = function () {
         if (TimerManager.currentTime == 0 && TimerManager.onBreak == false){
             //session completed
             TimerManager.sessionCompleted = true;
+            completedSessions++;
             TimerManager.onBreak = true;
-            TimerManager.currentTime = CONSTANTS.BREAK_TIME;
+            
+            if ((completedSessions % 4) == 0){
+                TimerManager.currentTime = CONSTANTS.LONG_BREAK_TIME;
+            }
+            else {
+                TimerManager.currentTime = CONSTANTS.BREAK_TIME;
+            }
+            
         } 
         else if (TimerManager.currentTime == 0 && TimerManager.onBreak == true){
             //break completed
@@ -116,7 +130,6 @@ TimerManager.startBreak = function() {
         stopCountdown();
     }
     else {
-        TimerManager.currentTime = CONSTANTS.BREAK_TIME;
         TimerManager.sessionCompleted = false;
         
         count();

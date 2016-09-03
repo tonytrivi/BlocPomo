@@ -26,9 +26,10 @@
     angular
         .module('pomodoro', ['ui.router', 'firebase'])
         .constant("CONSTANTS", {
-        "SESSION_TIME": 10,
-        "BREAK_TIME": 5
+        "SESSION_TIME": 1500,
+        "BREAK_TIME": 300,
+        "LONG_BREAK_TIME": 1500
     })
-         .config(config);
+    .config(config);
     
 })();
