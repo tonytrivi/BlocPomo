@@ -1,12 +1,6 @@
 (function() {
-     function TimerManager($interval) {
+     function TimerManager($interval, CONSTANTS) {
      var TimerManager = {};
-
-/**
-* @desc Session length.
-* @type {Number}
-*/
-var SESSION_LENGTH = 10;  //seconds - 25 minutes
 
 /**
 * @desc promise for the $interval function.
@@ -15,47 +9,10 @@ var SESSION_LENGTH = 10;  //seconds - 25 minutes
 var intervalPromise;
          
 /**
-* @desc stops countdown and resets state.
-* @type {Object}
-*/
-var stopCountdown = function () {
-    if (angular.isDefined(intervalPromise)) {
-        $interval.cancel(intervalPromise);
-        intervalPromise = undefined;
-        
-        TimerManager.running = false;
-        
-        if(TimerManager.currentTime == 0){
-            //session completed
-            TimerManager.sessionCompleted = true;
-        }
-        //reset the timer
-        TimerManager.currentTime = SESSION_LENGTH;
-    }
-};
-         
-/**
-* @desc Starts the countdown for a session
-* @type {void}
-*/
-var count = function () {
-    TimerManager.running = true;
-    intervalPromise = $interval(function(){
-        if (TimerManager.currentTime > 0) {
-            TimerManager.currentTime--;
-        }
-        else {
-            //count is over
-            stopCountdown();
-        }   
-    }, 1000);
-};
-
-/**
 * @desc Timer time remaining.
 * @type {Number}
 */
-TimerManager.currentTime = null;
+TimerManager.currentTime = CONSTANTS.SESSION_TIME;
 
 /**
 * @desc Lets you know if the timer is counting down.
@@ -74,18 +31,75 @@ TimerManager.sessionCompleted = false;
 * @type {String}
 */
 TimerManager.onBreak = false;  //session or break
+         
+/**
+* @desc stops countdown and resets state.
+* @type {Object}
+*/
+var stopCountdown = function () {
+    if (angular.isDefined(intervalPromise)) {
+        $interval.cancel(intervalPromise);
+        intervalPromise = undefined;
+        
+        TimerManager.running = false;
+        
+        if (TimerManager.currentTime == 0 && TimerManager.onBreak == false){
+            //session completed
+            TimerManager.sessionCompleted = true;
+            TimerManager.onBreak = true;
+            TimerManager.currentTime = CONSTANTS.BREAK_TIME;
+        } 
+        else if (TimerManager.currentTime == 0 && TimerManager.onBreak == true){
+            //break completed
+            TimerManager.sessionCompleted = true;
+            TimerManager.onBreak = false;
+            TimerManager.currentTime = CONSTANTS.SESSION_TIME;
+        } 
+        else if (TimerManager.currentTime != 0 && TimerManager.onBreak == true){
+            //break reset
+            TimerManager.sessionCompleted = false;
+            TimerManager.currentTime = CONSTANTS.BREAK_TIME;
+        }
+        else {
+            //session reset by the user
+            TimerManager.sessionCompleted = false;
+            TimerManager.currentTime = CONSTANTS.SESSION_TIME;
+        }
+
+       
+    }
+};
+         
+/**
+* @desc Counts down for a session or for a break.
+* @type {void}
+*/
+var count = function () {
+    TimerManager.running = true;
+    intervalPromise = $interval(function(){
+        if (TimerManager.currentTime > 0) {
+            TimerManager.currentTime--;
+        }
+        else {
+            //count is over
+            stopCountdown();
+        }   
+    }, 1000);
+};
 
 /**
 * @function TimerManager.startSession
 * @scope public
-* @desc Starts or resets the timer.
+* @desc Starts or resets the timer for a session.
 */
 TimerManager.startSession = function() {
     if (TimerManager.running) {
         stopCountdown();
     }
     else {
-        TimerManager.currentTime = SESSION_LENGTH;
+        //reset if we are starting
+        TimerManager.currentTime = CONSTANTS.SESSION_TIME;
+        TimerManager.sessionCompleted = false;
         //begin countdown
         count();
     }
@@ -102,9 +116,9 @@ TimerManager.startBreak = function() {
         stopCountdown();
     }
     else {
-        TimerManager.currentTime = SESSION_LENGTH;
-        TimerManager.onBreak = true;
-        //begin countdown
+        TimerManager.currentTime = CONSTANTS.BREAK_TIME;
+        TimerManager.sessionCompleted = false;
+        
         count();
     }
             
@@ -115,5 +129,5 @@ TimerManager.startBreak = function() {
  
      angular
          .module('pomodoro')
-         .factory('TimerManager', ['$interval', TimerManager]);
+         .factory('TimerManager', ['$interval','CONSTANTS', TimerManager]);
 })();

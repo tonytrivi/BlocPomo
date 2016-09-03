@@ -1,5 +1,5 @@
 (function() {
-     function LandingCtrl($firebaseObject,TimerManager) {
+     function LandingCtrl($firebaseObject,TimerManager, CONSTANTS) {
          this.timerManager = TimerManager;
          this.RESET = "Reset";
          this.START_SESSION = "Start Session";
@@ -11,6 +11,7 @@
          this.startSession = function () {
              if (!TimerManager.running) {
                 this.sessionDisplay = this.RESET;
+                this.breakDisplay = this.START_BREAK;
                 this.timerManager.startSession();
              }
              else {
@@ -26,11 +27,18 @@
          this.startBreak = function () {
              if (!TimerManager.running) {
                 this.breakDisplay = this.RESET;
+                this.sessionDisplay = this.START_SESSION;
                 this.timerManager.startBreak();
+                 
+                
              }
              else {
                 this.breakDisplay = this.START_BREAK;
+                
+                
                 this.timerManager.startBreak();
+                 
+                
                  
              }
              
@@ -58,7 +66,7 @@
  
      angular
          .module('pomodoro')
-         .controller('LandingCtrl', ['$firebaseObject','TimerManager', LandingCtrl]);
+         .controller('LandingCtrl', ['$firebaseObject','TimerManager','CONSTANTS', LandingCtrl]);
  })();
 
 
