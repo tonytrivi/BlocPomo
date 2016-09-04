@@ -1,5 +1,5 @@
 (function() {
-     function timeconverter() {
+     function timeconverter() {         
          return function(seconds) {
              
              var output = new Date(1970, 0, 1).setSeconds(seconds);
@@ -10,5 +10,5 @@
 
      angular
          .module('pomodoro')
-         .filter('timeconverter', timeconverter);
+         .filter('timeconverter', [timeconverter]);
  })();

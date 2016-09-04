@@ -39,23 +39,6 @@ TimerManager.onBreak = false;  //session or break
 var completedSessions = 0;
          
 /**
-* @desc Holds the sound object
-* @type {Object}
-*/
-var dingObject = null;
-         
-/**
-* @desc sets the ding
-* @type {void}
-*/
-var setSound = function () {
-  dingObject = new buzz.sound('/assets/sounds/DING2', {
-                formats: ['mp3'],
-                preload: true
-            });
-};
-         
-/**
 * @desc stops countdown and resets state.
 * @type {void}
 */
@@ -68,7 +51,6 @@ var stopCountdown = function () {
         
         if (TimerManager.currentTime == 0 && TimerManager.onBreak == false){
             //session completed
-            dingObject.play();
             TimerManager.sessionCompleted = true;
             completedSessions++;
             TimerManager.onBreak = true;
@@ -83,7 +65,6 @@ var stopCountdown = function () {
         } 
         else if (TimerManager.currentTime == 0 && TimerManager.onBreak == true){
             //break completed
-            dingObject.play();
             TimerManager.sessionCompleted = true;
             TimerManager.onBreak = false;
             TimerManager.currentTime = CONSTANTS.SESSION_TIME;
@@ -156,7 +137,6 @@ TimerManager.startBreak = function() {
             
 };
     
-    setSound();
     return TimerManager;
 }
  

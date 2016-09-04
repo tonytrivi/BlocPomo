@@ -1,18 +1,51 @@
 
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
 header {
-    background-color: lightgoldenrodyellow;
+    background-color: aliceblue;
+    margin: 0;
+    padding: 0;
+    height: 4em;
+}
+
+.title {
+    padding-top: 5px;
+}
+
+.title-text {
+    color: lightgray;
+    font-family: inconsolata;
+    font-size: 2.5em;
+    padding-left: .5em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 nav {
     background-color: lightpink;
+    height: 4px;
+}
+
+.stripe {
+    background-color: lightpink;
+    height: 2px;
 }
 
 footer {
-    background-color: lightsalmon;
+    background-color: whitesmoke;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:20px;
 }
 
 main {
-    background-color: aliceblue;
+    
 }
 
 .fade-in {
@@ -23,6 +56,8 @@ main {
 .fade-in:hover {
       opacity: .9;
 }
+
+
 
 
 
