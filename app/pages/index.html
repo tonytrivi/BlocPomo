@@ -21,13 +21,14 @@
         <div class="container">
                 <div class="row">
                     <div class="col-xs-5 tasks">
-                        <p>Task history</p>
-                        <input type="text" class="form-control" id="taskDesc">
-                          <button type="button" class="fade-in btn btn-primary btn-sm">
-                                add task
-                          </button>
+                        <p class="lead">Task history</p>
+                        <input type="text" class="form-control" ng-model="landing.description"/>
+                        <button type="button" class="fade-in btn btn-primary btn-sm" ng-click="landing.addTask()">
+                                Add task
+                        </button>
+                        <span>{{ allTasks }}</span>
                         <ul>
-                            <li ng-repeat="task in landing.tasks">{{ task }}</li>
+                            <li ng-repeat="task in landing.allTasks">{{ task.description }}</li>
                         </ul>
                     </div>
                     <div class="col-xs-7">

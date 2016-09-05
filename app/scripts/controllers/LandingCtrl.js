@@ -2,15 +2,20 @@
      function LandingCtrl($firebaseObject,TimerManager,Tasks,CONSTANTS,$scope) {
          this.timerManager = TimerManager;
          $scope.timeMan = TimerManager;
-         this.tasks = Tasks;
+         this.allTasks = Tasks.all;
+         this.description;
          
-         //strings
          this.RESET = "Reset";
          this.START_SESSION = "Start Session";
          this.START_BREAK = "Start Break";
          
          this.sessionDisplay = this.START_SESSION;
          this.breakDisplay = this.START_BREAK;
+         
+         
+         this.addTask = function () {
+             Tasks.addTask(this.description);
+         };
          
          this.startSession = function () {
              if (!TimerManager.running) {
@@ -41,8 +46,6 @@
                 
                 
                 this.timerManager.startBreak();
-                 
-                
                  
              }
              
