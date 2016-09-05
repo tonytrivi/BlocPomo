@@ -10,7 +10,7 @@
 <body ng-controller="LandingCtrl as landing">
     <header>
         <div class="title">
-            <span class="title-text">Pomodoro Timer</span>
+            <span class="title-text">Pomodoro</span>
         </div>
         
     </header>
@@ -19,18 +19,34 @@
     </nav>
     <main>
         <div class="container">
-                <div class="row text-center">
-                    <h1 class="text-success">
-                        {{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}
-                    </h1>
-                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="!landing.timerManager.onBreak" ng-click="landing.startSession()">
-                        {{ landing.sessionDisplay }}
-                    </button>
-                    <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="landing.timerManager.onBreak" ng-click="landing.startBreak()">
-                        {{ landing.breakDisplay }}
-                    </button>
-                </div>
+                <div class="row">
+                    <div class="col-xs-5 tasks">
+                        <p>Task history</p>
+                        <input type="text" class="form-control" id="taskDesc">
+                          <button type="button" class="fade-in btn btn-primary btn-sm">
+                                add task
+                          </button>
+                        <ul>
+                            <li ng-repeat="task in landing.tasks">{{ task }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="row text-center">
+                            <h1 class="text-success">
+                                {{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}
+                            </h1>
+                            <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="!landing.timerManager.onBreak" ng-click="landing.startSession()">
+                                {{ landing.sessionDisplay }}
+                            </button>
+                            <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="landing.timerManager.onBreak" ng-click="landing.startBreak()">
+                                {{ landing.breakDisplay }}
+                            </button>
+                        </div>
+                    </div>
+                </div> 
         </div>
+        
+      
         
         
      
@@ -77,9 +93,11 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.1.0/buzz.min.js"></script>
     <script src="/scripts/app.js"></script>
+    <script src="/scripts/services/Tasks.js"></script>
     <script src="/scripts/services/TimerManager.js"></script>
     <script src="/scripts/controllers/LandingCtrl.js"></script>
     <script src="/scripts/filters/TimeConverter.js"></script>
+    
 </body>
 </html>
 

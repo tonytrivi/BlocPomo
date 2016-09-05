@@ -25,6 +25,10 @@ header {
     text-transform: uppercase;
 }
 
+.tasks {
+    background-color: aqua;    
+}
+
 nav {
     background-color: lightpink;
     height: 4px;

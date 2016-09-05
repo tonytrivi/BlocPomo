@@ -1,7 +1,10 @@
 (function() {
-     function LandingCtrl($firebaseObject,TimerManager, CONSTANTS, $scope) {
+     function LandingCtrl($firebaseObject,TimerManager,Tasks,CONSTANTS,$scope) {
          this.timerManager = TimerManager;
          $scope.timeMan = TimerManager;
+         this.tasks = Tasks;
+         
+         //strings
          this.RESET = "Reset";
          this.START_SESSION = "Start Session";
          this.START_BREAK = "Start Break";
@@ -85,7 +88,7 @@
  
      angular
          .module('pomodoro')
-         .controller('LandingCtrl', ['$firebaseObject','TimerManager','CONSTANTS','$scope', LandingCtrl]);
+         .controller('LandingCtrl', ['$firebaseObject','TimerManager','Tasks','CONSTANTS','$scope', LandingCtrl]);
  })();
 
 
