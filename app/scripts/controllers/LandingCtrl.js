@@ -15,6 +15,7 @@
          
          this.addTask = function () {
              Tasks.addTask(this.description);
+             this.description = "";
          };
          
          this.startSession = function () {

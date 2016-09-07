@@ -33,6 +33,11 @@ header {
     
 }
 
+.time {
+    color: gray;
+    
+}
+
 .title-text {
     color: gray;
     font-family: inconsolata;
@@ -52,17 +57,33 @@ header {
 
 }
 
+.shim {
+    margin: 4px;
+}
+
 .task-list {
-    color: white;
-    font-family: inconsolata;
-    font-size: 1em;
+    border-radius: 2px;
+    background-color: white;
+    margin: 3px;
+
 
 }
+
+.task-desc {
+    color: gray;
+    border-radius: 3px;
+    font-family: inconsolata;
+    font-size: .9em;
+    padding-left: .5em;
+
+}
+
 
 .tasks {
     background-color: teal;  
     height:100vh;
     float:left;
+
 }
 
 nav {

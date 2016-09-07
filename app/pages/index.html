@@ -23,16 +23,25 @@
                     <div class="col-xs-5 tasks">
                         <span class="subtitle-text">task history</span>
                         <input type="text" class="form-control" ng-model="landing.description"/>
+                        <div class="shim"></div>
                         <button type="button" class="fade-in btn btn-primary btn-sm" ng-click="landing.addTask()">
                                 add task
                         </button>
-                        <ul>
+                        <div class="shim"></div>
+                        <div ng-repeat="task in landing.allTasks" class="task-list">
+                            <span class="task-desc">{{ task.description }}</span>
+                        </div>
+                        
+                        
+                        
+                        
+                  <!--      <ul>
                             <li ng-repeat="task in landing.allTasks" class="task-list">{{ task.description }}</li>
-                        </ul>
+                        </ul>  -->
                     </div>
                     <div class="col-xs-7 timer-container">
                         <div class="row text-center">
-                            <h1 class="text-success">
+                            <h1 class="time">
                                 {{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}
                             </h1>
                             <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="!landing.timerManager.onBreak" ng-click="landing.startSession()">
