@@ -15,7 +15,6 @@
         
     </header>
     <nav>
-
     </nav>
     <main>
         <div class="container">
@@ -24,63 +23,35 @@
                         <span class="subtitle-text">task history</span>
                         <input type="text" class="form-control" ng-model="landing.description"/>
                         <div class="shim"></div>
-                        <button type="button" class="fade-in btn btn-primary btn-sm" ng-click="landing.addTask()">
+                        <button type="button" class="fade-in btn btn-sm" ng-click="landing.addTask()">
                                 add task
                         </button>
                         <div class="shim"></div>
                         <div ng-repeat="task in landing.allTasks" class="task-list">
                             <span class="task-desc">{{ task.description }}</span>
                         </div>
-                        
-                        
-                        
-                        
-                  <!--      <ul>
-                            <li ng-repeat="task in landing.allTasks" class="task-list">{{ task.description }}</li>
-                        </ul>  -->
+ 
                     </div>
                     <div class="col-xs-7 timer-container">
                         <div class="row text-center">
                             <h1 class="time">
-                                {{landing.timerManager.currentTime | timeconverter | date:'mm:ss'}}
+                                {{landing.timerManager.currentTime | timeConverter | date:'mm:ss'}}
                             </h1>
-                            <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="!landing.timerManager.onBreak" ng-click="landing.startSession()">
+                            <button type="button" class="fade-in btn btn-lg" ng-show="!landing.timerManager.onBreak" ng-click="landing.startSession()">
                                 {{ landing.sessionDisplay }}
                             </button>
-                            <button type="button" class="fade-in btn btn-primary btn-lg" ng-show="landing.timerManager.onBreak" ng-click="landing.startBreak()">
+                            <button type="button" class="fade-in btn btn-lg" ng-show="landing.timerManager.onBreak" ng-click="landing.startBreak()">
                                 {{ landing.breakDisplay }}
                             </button>
                         </div>
                     </div>
                 </div> 
         </div>
-        
-      
-        
-        
-     
-        
-        
-        
-        
-        
-   <!--     <ul>
-            <li ng-repeat="thing in landing.object">{{thing}}</li>
-        </ul>
-         <h6>{{landing.object | json}}</h6> 
 
-
-
-        <ui-view></ui-view>   -->
-
-
+     <!--     <ui-view></ui-view>   -->
     </main>
     <footer>
     </footer>
-    
-    
-    
-    
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
@@ -98,14 +69,12 @@
       };
       firebase.initializeApp(config);
 
-
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.1.0/buzz.min.js"></script>
     <script src="/scripts/app.js"></script>
     <script src="/scripts/services/Tasks.js"></script>
     <script src="/scripts/services/TimerManager.js"></script>
     <script src="/scripts/controllers/LandingCtrl.js"></script>
-    <script src="/scripts/filters/TimeConverter.js"></script>
+    <script src="/scripts/filters/timeConverter.js"></script>
     
 </body>
 </html>

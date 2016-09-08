@@ -5,9 +5,9 @@
          this.allTasks = Tasks.all;
          this.description;
          
-         this.RESET = "Reset";
-         this.START_SESSION = "Start Session";
-         this.START_BREAK = "Start Break";
+         this.RESET = "reset";
+         this.START_SESSION = "start session";
+         this.START_BREAK = "start break";
          
          this.sessionDisplay = this.START_SESSION;
          this.breakDisplay = this.START_BREAK;
@@ -33,7 +33,11 @@
          
          };
          
-         
+         /**
+* @function TimerManager.startBreak
+* @scope public
+* @desc Starts or resets the timer for a break.
+*/
          this.startBreak = function () {
              if (!TimerManager.running) {
                 this.breakDisplay = this.RESET;
@@ -49,45 +53,20 @@
                 this.timerManager.startBreak();
                  
              }
-             
-         
          };
-         
-
-          
+                 
          var currentBuzzObject = new buzz.sound('/assets/sounds/DING2', {
                 formats: ['mp3'],
                 preload: true
          });
          
-         $scope.$watch('timeMan.currentTime', function() {
-             if($scope.timeMan.currentTime == 0) {
+         $scope.$watch('this.timerManager.currentTime', function() {
+             if(this.timerManager.currentTime == 0) {
                  currentBuzzObject.play();
              }   
              
          });
-         
-       
-         
-       
-         
 
-         
-         
-         //firebase experimenting
-         //var dbRef = firebase.database().ref().child('tony');
-         //this.object = $firebaseObject(dbRef);
-         
-         //this.sayHello = () => { return `${this.object.name}`; }
-         //this.sayHello = this.object.name;
-         
-         //var myObj = {name: 'grace'};
-         //dbRef.push().set(myObj);
-         
- 
-         
-
-         
      }
  
      angular

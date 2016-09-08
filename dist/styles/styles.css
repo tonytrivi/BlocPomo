@@ -8,6 +8,10 @@ body {
     height:100vh;
 }
 
+button {
+    font-family: inconsolata;
+}
+
 .container {
     height:100vh;
     width:100%;   
@@ -35,6 +39,7 @@ header {
 
 .time {
     color: gray;
+    font-family: inconsolata;
     
 }
 
