@@ -21,11 +21,13 @@
                 <div class="row container-level">
                     <div class="col-xs-5 tasks">
                         <span class="subtitle-text">task history</span>
-                        <input type="text" class="form-control" ng-model="landing.description"/>
-                        <div class="shim"></div>
-                        <button type="button" class="fade-in btn btn-sm" ng-click="landing.addTask()">
+                        <form ng-submit="landing.addTask()">
+                            <input type="text" class="form-control" ng-model="landing.description"/>
+                            <div class="shim"></div>
+                            <button type="button" class="fade-in btn btn-sm" ng-click="landing.addTask()">
                                 add task
-                        </button>
+                            </button>
+                        </form>
                         <div class="shim"></div>
                         <div ng-repeat="task in landing.allTasks" class="task-list">
                             <span class="task-desc">{{ task.description }}</span>
@@ -47,7 +49,6 @@
                     </div>
                 </div> 
         </div>
-
      <!--     <ui-view></ui-view>   -->
     </main>
     <footer>
@@ -75,7 +76,6 @@
     <script src="/scripts/services/TimerManager.js"></script>
     <script src="/scripts/controllers/LandingCtrl.js"></script>
     <script src="/scripts/filters/timeConverter.js"></script>
-    
 </body>
 </html>
 

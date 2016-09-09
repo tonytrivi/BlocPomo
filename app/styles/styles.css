@@ -19,7 +19,6 @@ button {
 
 .container-level {
     height:100vh;
-
 }
 
 header {
@@ -29,18 +28,20 @@ header {
     height: 4em;
 }
 
+input {
+    font-family: inconsolata;
+}
+
 .title {
     padding-top: 5px;
 }
 
 .timer-container {
-    
 }
 
 .time {
     color: gray;
     font-family: inconsolata;
-    
 }
 
 .title-text {
@@ -52,14 +53,12 @@ header {
     text-transform: uppercase;
 }
 
-
 .subtitle-text {
     color: white;
     font-family: inconsolata;
     font-size: 1.5em;
     padding-left: .2em;
     letter-spacing: 1px;
-
 }
 
 .shim {
@@ -70,8 +69,8 @@ header {
     border-radius: 2px;
     background-color: white;
     margin: 3px;
-
-
+    padding-left: .5em;
+    padding-right: .2em;
 }
 
 .task-desc {
@@ -79,16 +78,13 @@ header {
     border-radius: 3px;
     font-family: inconsolata;
     font-size: .9em;
-    padding-left: .5em;
-
+    
 }
-
 
 .tasks {
     background-color: teal;  
     height:100vh;
     float:left;
-
 }
 
 nav {
@@ -106,7 +102,6 @@ footer {
 }
 
 main {
-    
 }
 
 .fade-in {
@@ -116,16 +111,4 @@ main {
 
 .fade-in:hover {
       opacity: .9;
-}
-
-
-
-
-
-
-
-
-
-
-
-   
+}   

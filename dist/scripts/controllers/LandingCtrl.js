@@ -12,12 +12,19 @@
          this.sessionDisplay = this.START_SESSION;
          this.breakDisplay = this.START_BREAK;
          
-         
+         /**
+         * @function addTask
+         * @desc Adds a task and resets the display for the next.
+         */
          this.addTask = function () {
              Tasks.addTask(this.description);
              this.description = "";
          };
          
+         /**
+         * @function startSession
+         * @desc Starts or resets a session. Ensures that the user has the correct instructions.
+         */
          this.startSession = function () {
              if (!TimerManager.running) {
                 this.sessionDisplay = this.RESET;
@@ -26,32 +33,25 @@
              }
              else {
                 this.sessionDisplay = this.START_SESSION;
-                this.timerManager.startSession();
-                 
+                this.timerManager.startSession();   
              }
-             
-         
          };
          
          /**
-* @function TimerManager.startBreak
-* @scope public
-* @desc Starts or resets the timer for a break.
-*/
+         * @function startBreak
+         * @desc Starts or resets a break. Ensures that the user has the correct instructions.
+         */
          this.startBreak = function () {
              if (!TimerManager.running) {
                 this.breakDisplay = this.RESET;
                 this.sessionDisplay = this.START_SESSION;
-                this.timerManager.startBreak();
-                 
                 
+                 this.timerManager.startBreak();
              }
              else {
                 this.breakDisplay = this.START_BREAK;
                 
-                
                 this.timerManager.startBreak();
-                 
              }
          };
                  
@@ -60,15 +60,12 @@
                 preload: true
          });
          
-         $scope.$watch('this.timerManager.currentTime', function() {
-             if(this.timerManager.currentTime == 0) {
+         $scope.$watch('$scope.timeMan.currentTime', function() {
+             if($scope.timeMan.currentTime == 0) {
                  currentBuzzObject.play();
              }   
-             
          });
-
      }
- 
      angular
          .module('pomodoro')
          .controller('LandingCtrl', ['$firebaseObject','TimerManager','Tasks','CONSTANTS','$scope', LandingCtrl]);
