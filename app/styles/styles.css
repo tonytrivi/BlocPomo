@@ -21,6 +21,10 @@ button {
     height:100vh;
 }
 
+.form-cont {
+    padding-left: .2em;
+}
+
 header {
     background-color:#f2f2f2;
     margin: 0;
@@ -30,6 +34,8 @@ header {
 
 input {
     font-family: inconsolata;
+    border-radius: 2px;
+    border: none;
 }
 
 .title {
@@ -41,7 +47,7 @@ input {
 
 .time {
     color: gray;
-    font-family: inconsolata;
+    font-family: PT+Sans+Narrow;
 }
 
 .title-text {
@@ -61,6 +67,9 @@ input {
     letter-spacing: 1px;
 }
 
+.subtitle-cont {
+}
+
 .shim {
     margin: 4px;
 }
@@ -75,19 +84,35 @@ input {
 
 .task-desc {
     color: gray;
-    border-radius: 3px;
+    border-radius: 2px;
     font-family: inconsolata;
-    font-size: .9em;
+    font-size: 1em;
+}
+
+
+.task-datetime {
+    color: #ff9999;
+    font-family: PT+Sans+Narrow;
+    font-size: .7em;
+}
+
+.task-datetime-cont {
+}
+
+.task-desc-cont {
+    padding-top: 0;
+    padding-bottom: .6em;
+
 }
 
 .tasks {
-    background-color: teal;  
+    background-color: #00b3b3;  
     height:100vh;
     float:left;
 }
 
 nav {
-    background-color: crimson;
+    background-color: #ff6666;
     height: 4px;
 }
 

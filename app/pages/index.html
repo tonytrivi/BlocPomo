@@ -5,6 +5,7 @@
     <title>TonyPom</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" >
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body ng-controller="LandingCtrl as landing">
@@ -20,19 +21,21 @@
         <div class="container">
                 <div class="row container-level">
                     <div class="col-xs-5 tasks">
-                        <span class="subtitle-text">task history</span>
-                        <form ng-submit="landing.addTask()">
-                            <input type="text" class="form-control" ng-model="landing.description"/>
-                            <div class="shim"></div>
-                            <button type="button" class="fade-in btn btn-sm" ng-click="landing.addTask()">
-                                add task
-                            </button>
-                        </form>
-                        <div class="shim"></div>
-                        <div ng-repeat="task in landing.allTasks" class="task-list">
-                            <span class="task-desc">{{ task.description }}</span>
+                        <div class="subtitle-cont"><span class="subtitle-text">Task History</span></div>
+                        <div class="form-cont">
+                            <form ng-submit="landing.addTask()">
+                                <input class="textarea-desc" ng-model="landing.description" placeholder="enter task"/>
+                                <div class="shim"></div>
+                                <button type="button" class="fade-in btn btn-sm" ng-click="landing.addTask()">
+                                    add task
+                                </button>
+                            </form>
                         </div>
- 
+                        <div class="shim"></div>
+                        <div ng-repeat="task in landing.allTasks | orderBy:'-timeStamp'" class="task-list">
+                            <div class="task-datetime-cont"><span class="task-datetime">{{ task.timeStamp | date:'short' }}</span></div>
+                            <div class="task-desc-cont"><span class="task-desc">{{ task.description }}</span></div>
+                        </div>
                     </div>
                     <div class="col-xs-7 timer-container">
                         <div class="row text-center">

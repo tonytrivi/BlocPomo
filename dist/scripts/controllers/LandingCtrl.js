@@ -17,8 +17,10 @@
          * @desc Adds a task and resets the display for the next.
          */
          this.addTask = function () {
-             Tasks.addTask(this.description);
-             this.description = "";
+             if(this.description.length > 0) {
+                Tasks.addTask(this.description);
+                this.description = "";
+             }
          };
          
          /**

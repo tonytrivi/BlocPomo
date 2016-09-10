@@ -11,7 +11,10 @@
     return {
       all: tasks,
       addTask: function (desc) {
-          var newTask = { "description": desc };
+          //add tasks with a timestamp
+          var timeStamp = Date.now();
+          var newTask = { "description": desc,
+                          "timeStamp": timeStamp };
           tasks.$add(newTask);
       }
     };
