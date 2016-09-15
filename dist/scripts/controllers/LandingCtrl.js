@@ -1,7 +1,7 @@
 (function() {
      function LandingCtrl($firebaseObject,TimerManager,Tasks,CONSTANTS,$scope) {
          this.timerManager = TimerManager;
-         $scope.timeMan = TimerManager;
+         //$scope.timeMan = TimerManager;
          this.allTasks = Tasks.all;
          this.description;
          
@@ -57,20 +57,45 @@
              }
          };
                  
-         var currentBuzzObject = new buzz.sound('/assets/sounds/DING2', {
-                formats: ['mp3'],
-                preload: true
-         });
+         //var currentBuzzObject = new buzz.sound('/assets/sounds/DING2', {
+         //       formats: ['mp3'],
+         //       preload: true
+         //});
          
-         $scope.$watch('$scope.timeMan.currentTime', function() {
-             if($scope.timeMan.currentTime == 0) {
-                 currentBuzzObject.play();
-             }   
-         });
+         //$scope.$watch('$scope.timeMan.currentTime', function() {
+         //    if($scope.timeMan.currentTime == 0) {
+         //        currentBuzzObject.play();
+         //    }   
+         //});
      }
      angular
          .module('pomodoro')
-         .controller('LandingCtrl', ['$firebaseObject','TimerManager','Tasks','CONSTANTS','$scope', LandingCtrl]);
+         .controller('LandingCtrl', ['$firebaseObject','TimerManager','Tasks','CONSTANTS','$scope', LandingCtrl])
+         .directive('tonyTimer', ['TimerManager',function tonyTimer(TimerManager) {
+            //this.timerManager = TimerManager;
+
+            /**
+            * @Object currentBuzzObject
+            * @desc Controls the ding.
+            */
+            //var currentBuzzObject = new buzz.sound('/assets/sounds/DING2', {
+            //    formats: ['mp3'],
+            //    preload: true
+            //});
+            
+            /**
+            * @$watch on the currentTime
+            */
+            //$scope.$watch('this.timerManager.currentTime', function() {
+            //    if(this.timerManager.currentTime == 0) {
+            //        currentBuzzObject.play();
+            //    }   
+            //});
+         
+            return {
+                template: "<h1 class='time'>{{landing.timerManager.currentTime | timeConverter | date:'mm:ss'}}</h1>"
+            };
+         }]);
  })();
 
 

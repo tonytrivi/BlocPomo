@@ -39,9 +39,10 @@
                     </div>
                     <div class="col-xs-7 timer-container">
                         <div class="row text-center">
-                            <h1 class="time">
+                      <!--  <h1 class="time">
                                 {{landing.timerManager.currentTime | timeConverter | date:'mm:ss'}}
-                            </h1>
+                            </h1>  -->
+                            <div tony-timer></div>
                             <button type="button" class="fade-in btn btn-lg" ng-show="!landing.timerManager.onBreak" ng-click="landing.startSession()">
                                 {{ landing.sessionDisplay }}
                             </button>
