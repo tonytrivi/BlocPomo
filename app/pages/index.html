@@ -24,7 +24,7 @@
                         <div class="subtitle-cont"><span class="subtitle-text">Task History</span></div>
                         <div class="form-cont">
                             <form ng-submit="landing.addTask()">
-                                <input class="textarea-desc" ng-model="landing.description" placeholder="enter task"/>
+                                <textarea class="textarea-desc" ng-model="landing.description" placeholder="Be productive by..."></textarea>
                                 <div class="shim"></div>
                                 <button type="button" class="fade-in btn btn-sm" ng-click="landing.addTask()">
                                     add task
@@ -33,7 +33,9 @@
                         </div>
                         <div class="shim"></div>
                         <div ng-repeat="task in landing.allTasks | orderBy:'-timeStamp'" class="task-list">
-                            <div class="task-datetime-cont"><span class="task-datetime">{{ task.timeStamp | date:'short' }}</span></div>
+                            <div class="task-datetime-cont"><span class="task-datetime">{{ task.timeStamp | date:'short' }}</span><button class="transp fade-in btn btn-xs" ng-click="landing.allTasks.$remove(task)">
+                                    delete
+                            </button></div>
                             <div class="task-desc-cont"><span class="task-desc">{{ task.description }}</span></div>
                         </div>
                     </div>

@@ -10,6 +10,12 @@ body {
 
 button {
     font-family: inconsolata;
+    color: gray;
+    background: lightgray;
+}
+
+.transp {
+    background: none;
 }
 
 .container {
@@ -89,6 +95,11 @@ input {
     font-size: 1em;
 }
 
+.textarea-desc {
+    border-radius: 2px;
+    border-style: none;
+    font-family: inconsolata;
+}
 
 .task-datetime {
     color: #ff9999;
