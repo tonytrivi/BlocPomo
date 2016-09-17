@@ -7,7 +7,6 @@
              return output;
          };
      }
-
      angular
          .module('pomodoro')
          .filter('timeConverter', [timeConverter]);
